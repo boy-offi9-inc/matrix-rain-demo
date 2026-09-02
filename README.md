@@ -24,7 +24,7 @@ APK from the [Actions](../../actions) tab — every push to `main` builds one.
 The library itself is pulled from JitPack:
 
 ```kotlin
-implementation("com.github.Boy-Offi9:matrix-rain-view:1.0.0")
+implementation("com.github.boy-offi9-inc:matrix-rain-view:1.0.0")
 ```
 
 ## License
