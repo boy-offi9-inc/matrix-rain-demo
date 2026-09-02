@@ -1,0 +1,40 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- The rain itself: bottom-most child, fills the whole screen -->
+    <com.boyoffi9.matrixrainview.MatrixRainView
+        android:id="@+id/matrixRain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rainColor="#00FF41"
+        app:rainSpeed="1.2"
+        app:rainDensity="1.0"
+        app:rainGlow="true"
+        app:rainFadeStrength="28"
+        app:rainCharSet="katakana" />
+
+    <!-- Real UI content stacked on top — this is the "plug it in behind
+         a LinearLayout" use case: put your LinearLayout here, not
+         alongside the rain view as a LinearLayout sibling. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wake up, Neo..."
+            android:textColor="#00FF41"
+            android:textSize="22sp"
+            android:fontFamily="monospace" />
+
+    </LinearLayout>
+
+</FrameLayout>
