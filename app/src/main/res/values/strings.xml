@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Matrix Rain Demo</string>
     <string name="banner_text">Wake up, Neo...</string>
+
+    <string name="settings_icon">⚙</string>
+    <string name="label_color">Color</string>
+    <string name="label_speed">Speed</string>
+    <string name="label_density">Density</string>
+    <string name="label_fade">Trail fade</string>
+    <string name="label_glow">Glow</string>
+    <string name="label_charset">Character set</string>
+    <string name="charset_katakana">Katakana</string>
+    <string name="charset_binary">Binary</string>
+    <string name="charset_alnum">Alnum</string>
 </resources>
