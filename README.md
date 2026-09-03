@@ -18,13 +18,13 @@ working, running proof of that pattern instead of just a doc claim.
 
 ## Running it
 
-Open in Android Studio and run the `app` module, or grab a prebuilt debug
-APK from the [Actions](../../actions) tab — every push to `main` builds one.
+Open in Android Studio and run the `app` module. A prebuilt debug APK is available
+from the Actions tab (CI builds run on pushes to the `main` branch).
 
 The library itself is pulled from JitPack:
 
 ```kotlin
-implementation("com.github.boy-offi9-inc:matrix-rain-view:1.0.0")
+implementation("com.github.boy-offi9-inc:matrix-rain-view:1.0.1")
 ```
 
 ## License
