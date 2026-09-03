@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Matrix Rain Demo</string>
+    <string name="banner_text">Wake up, Neo...</string>
 </resources>
