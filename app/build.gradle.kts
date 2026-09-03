@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    // Published via JitPack — see matrix-rain-view repo for the library source.
+    // Published via JitPack — use the latest released matrix-rain-view version.
     implementation("com.github.boy-offi9-inc:matrix-rain-view:1.0.0")
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
