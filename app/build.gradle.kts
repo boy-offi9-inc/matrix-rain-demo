@@ -35,12 +35,11 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
 }
 
 dependencies {
-    // Published via JitPack — use the latest released matrix-rain-view version.
     implementation("com.github.boy-offi9-inc:matrix-rain-view:1.1.0")
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
