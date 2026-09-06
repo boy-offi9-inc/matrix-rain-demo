@@ -43,6 +43,14 @@ property on `MatrixRainView` to a live control:
 Everything updates the running animation immediately — no restart needed —
 since it's the same public properties any consuming app would use.
 
+### Compose demo
+
+A top-right "Compose demo →" button opens `ComposeDemoActivity`, a second
+screen showing the exact same effect and controls (color, speed, density,
+glow) but built with Jetpack Compose, driving the library's `MatrixRain()`
+composable instead of the XML `MatrixRainView` directly. It's proof the
+Compose wrapper is a drop-in equivalent, not just a doc claim.
+
 ## Running it
 
 Open in Android Studio and run the `app` module. A prebuilt debug APK is
@@ -52,7 +60,7 @@ branch).
 The library itself is pulled from JitPack (latest release):
 
 ```kotlin
-implementation("com.github.boy-offi9-inc:matrix-rain-view:1.0.1")
+implementation("com.github.boy-offi9-inc:matrix-rain-view:1.1.0")
 ```
 
 ## License

@@ -1,5 +1,6 @@
 package com.boyoffi9.matrixrainview.demo
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -25,12 +26,19 @@ class MainActivity : AppCompatActivity() {
         rain = findViewById(R.id.matrixRain)
 
         setupToggle()
+        setupComposeDemoButton()
         setupColorSwatches()
         setupSpeedSlider()
         setupDensitySlider()
         setupFadeSlider()
         setupGlowSwitch()
         setupCharSetGroup()
+    }
+
+    private fun setupComposeDemoButton() {
+        findViewById<View>(R.id.composeDemoButton).setOnClickListener {
+            startActivity(Intent(this, ComposeDemoActivity::class.java))
+        }
     }
 
     private fun setupToggle() {

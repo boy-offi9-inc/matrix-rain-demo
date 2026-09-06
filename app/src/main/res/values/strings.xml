@@ -12,4 +12,5 @@
     <string name="charset_katakana">Katakana</string>
     <string name="charset_binary">Binary</string>
     <string name="charset_alnum">Alnum</string>
+    <string name="compose_demo_button">Compose demo →</string>
 </resources>

@@ -47,6 +47,19 @@
         android:background="@drawable/round_button_bg"
         android:textColor="@color/matrix_green" />
 
+    <!-- Launches the Jetpack Compose version of this same demo -->
+    <Button
+        android:id="@+id/composeDemoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp"
+        android:paddingHorizontal="16dp"
+        android:text="@string/compose_demo_button"
+        android:textSize="13sp"
+        android:background="@drawable/round_button_bg"
+        android:textColor="@color/matrix_green" />
+
     <!-- Settings panel, hidden until toggled -->
     <ScrollView
         android:id="@+id/settingsPanel"
