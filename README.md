@@ -60,9 +60,5 @@ branch).
 The library itself is pulled from JitPack (latest release):
 
 ```kotlin
-implementation("com.github.boy-offi9-inc:matrix-rain-view:1.1.0")
+implementation("com.github.boy-offi9-inc:matrix-rain-view:1.1.1")
 ```
-
-## License
-
-MIT — see [LICENSE](./LICENSE).
