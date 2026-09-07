@@ -1,5 +1,7 @@
 # matrix-rain-demo
 
+[![Build Debug APK](https://github.com/boy-offi9-inc/matrix-rain-demo/actions/workflows/build-debug-apk.yml/badge.svg)](https://github.com/boy-offi9-inc/matrix-rain-demo/actions/workflows/build-debug-apk.yml)
+
 A tiny sample app showing [matrix-rain-view](https://github.com/boy-offi9-inc/matrix-rain-view)
 in the "background effect" use case: a `MatrixRainView` running full-screen
 *behind* real UI, rather than as a full-screen effect on its own. Includes a
