@@ -10,6 +10,8 @@ library exposes.
 
 ## Screenshots
 
+![Matrix rain demo](assets/demo.gif)
+
 <p float="left">
   <img src="assets/scene_1.jpg" width="30%" alt="Red rain with settings panel open" />
   <img src="assets/scene_2.jpg" width="30%" alt="Green rain with settings panel open" />
