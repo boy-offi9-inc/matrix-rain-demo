@@ -15,7 +15,7 @@ library exposes.
 <p float="left">
   <img src="assets/scene_1.jpg" width="30%" alt="Red rain with settings panel open" />
   <img src="assets/scene_2.jpg" width="30%" alt="Green rain with settings panel open" />
-  <img src="assets/scene_3.jpg" width="30%" alt="Green rain, panel collapsed" />
+  <img src="assets/scene_3.jpg" width="30%" alt="Cyan binary rain with settings panel open" />
 </p>
 
 [Screen recording (mp4)](assets/video.mp4) — GitHub doesn't play local repo
@@ -43,15 +43,27 @@ property on `MatrixRainView` to a live control:
 - Trail fade
 - Glow toggle
 - Character set — Katakana / Binary / Alnum
+- Touch effects — flow around finger, flicker, tap shockwave, and glitch while held
+- Touch radius — 40dp to 200dp
+- Glitch — intensity from 0 to 1
+- Transparent — drops the black backdrop and shows a gradient behind the rain
 
 Everything updates the running animation immediately — no restart needed —
 since it's the same public properties any consuming app would use.
 
+### Try the touch effects
+
+Touch the rain with the settings panel closed. Streams part around your
+finger and close up behind it, glyphs under it flicker, and a quick tap sends
+out a shockwave. Use two or more fingers to part the rain in several places
+at once.
+
 ### Compose demo
 
 A top-right "Compose demo →" button opens `ComposeDemoActivity`, a second
-screen showing the exact same effect and controls (color, speed, density,
-glow) but built with Jetpack Compose, driving the library's `MatrixRain()`
+screen showing the same effect and most of the controls (color, speed,
+density, glow, touch effects, glitch, transparent) but built with Jetpack
+Compose, driving the library's `MatrixRain()`
 composable instead of the XML `MatrixRainView` directly. It's proof the
 Compose wrapper is a drop-in equivalent, not just a doc claim.
 
@@ -64,5 +76,5 @@ branch).
 The library itself is pulled from JitPack (latest release):
 
 ```kotlin
-implementation("com.github.boy-offi9-inc:matrix-rain-view:1.1.1")
+implementation("com.github.boy-offi9-inc:matrix-rain-view:1.2.0")
 ```

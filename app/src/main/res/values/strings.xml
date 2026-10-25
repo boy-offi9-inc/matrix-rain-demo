@@ -13,4 +13,14 @@
     <string name="charset_binary">Binary</string>
     <string name="charset_alnum">Alnum</string>
     <string name="compose_demo_button">Compose demo →</string>
+
+    <string name="hint_touch">Touch the rain</string>
+    <string name="label_touch">Touch effects</string>
+    <string name="touch_avoid">Flow around finger</string>
+    <string name="touch_flicker">Flicker</string>
+    <string name="touch_shockwave">Tap shockwave</string>
+    <string name="touch_glitch">Glitch while held</string>
+    <string name="label_radius">Touch radius</string>
+    <string name="label_glitch">Glitch</string>
+    <string name="label_transparent">Transparent</string>
 </resources>

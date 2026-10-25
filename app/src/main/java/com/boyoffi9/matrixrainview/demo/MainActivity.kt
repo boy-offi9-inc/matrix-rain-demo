@@ -12,8 +12,8 @@ import com.boyoffi9.matrixrainview.MatrixRainView
 /**
  * Demo Activity showing every runtime-configurable property on MatrixRainView
  * wired up to a live settings panel — color, speed, density, trail fade,
- * glow, and character set all update the running animation immediately,
- * with no need to pause/restart it.
+ * glow, character set, touch effects, glitch and transparent mode all update
+ * the running animation immediately, with no need to pause/restart it.
  */
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
         setupFadeSlider()
         setupGlowSwitch()
         setupCharSetGroup()
+        setupTouchSwitches()
+        setupRadiusSlider()
+        setupGlitchSlider()
+        setupTransparentSwitch()
     }
 
     private fun setupComposeDemoButton() {
@@ -44,6 +48,10 @@ class MainActivity : AppCompatActivity() {
     private fun setupToggle() {
         val toggle = findViewById<View>(R.id.settingsToggle)
         val panel = findViewById<View>(R.id.settingsPanel)
+        // The panel scrolls, so cap it at 60% of the screen height.
+        panel.layoutParams = panel.layoutParams.apply {
+            height = (resources.displayMetrics.heightPixels * 0.6f).toInt()
+        }
         toggle.setOnClickListener {
             panel.visibility = if (panel.visibility == View.VISIBLE) View.GONE else View.VISIBLE
         }
@@ -105,6 +113,53 @@ class MainActivity : AppCompatActivity() {
                 R.id.radioBinary -> MatrixRainView.CharSet.BINARY
                 R.id.radioAlnum -> MatrixRainView.CharSet.ALNUM
                 else -> MatrixRainView.CharSet.KATAKANA
+            }
+        }
+    }
+
+    private fun setupTouchSwitches() {
+        bindTouchFlag(R.id.avoidSwitch, MatrixRainView.TOUCH_AVOID)
+        bindTouchFlag(R.id.flickerSwitch, MatrixRainView.TOUCH_FLICKER)
+        bindTouchFlag(R.id.shockwaveSwitch, MatrixRainView.TOUCH_SHOCKWAVE)
+        bindTouchFlag(R.id.touchGlitchSwitch, MatrixRainView.TOUCH_GLITCH)
+    }
+
+    /** Ties a switch to one bit of [MatrixRainView.touchEffects], starting from the XML value. */
+    private fun bindTouchFlag(switchId: Int, flag: Int) {
+        val toggle = findViewById<android.widget.Switch>(switchId)
+        toggle.isChecked = (rain.touchEffects and flag) != 0
+        toggle.setOnCheckedChangeListener { _, checked ->
+            rain.touchEffects = if (checked) rain.touchEffects or flag else rain.touchEffects and flag.inv()
+        }
+    }
+
+    private fun setupRadiusSlider() {
+        // progress 0-160 maps to a touch radius of 40dp - 200dp
+        findViewById<SeekBar>(R.id.radiusSeek).setOnSeekBarChangeListener(
+            onProgressChanged { progress ->
+                rain.touchRadiusPx = (40 + progress) * resources.displayMetrics.density
+            }
+        )
+    }
+
+    private fun setupGlitchSlider() {
+        // progress 0-100 maps to glitch intensity 0.0 - 1.0
+        findViewById<SeekBar>(R.id.glitchSeek).setOnSeekBarChangeListener(
+            onProgressChanged { progress ->
+                rain.glitchIntensity = progress / 100f
+            }
+        )
+    }
+
+    private fun setupTransparentSwitch() {
+        val root = findViewById<View>(R.id.root)
+        findViewById<android.widget.Switch>(R.id.transparentSwitch).setOnCheckedChangeListener { _, checked ->
+            rain.transparentBackground = checked
+            // Transparent rain needs something behind it to show through.
+            if (checked) {
+                root.setBackgroundResource(R.drawable.backdrop_gradient)
+            } else {
+                root.setBackgroundColor(Color.BLACK)
             }
         }
     }

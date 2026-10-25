@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/matrix_black">
@@ -13,7 +14,9 @@
         app:rainDensity="1.0"
         app:rainGlow="true"
         app:rainFadeStrength="28"
-        app:rainCharSet="katakana" />
+        app:rainCharSet="katakana"
+        app:rainTouchEffects="avoid|flicker|shockwave"
+        app:rainTouchRadius="96dp" />
 
     <!-- Rain view must be the first/bottom child in the FrameLayout for this to stack correctly -->
     <LinearLayout
@@ -34,6 +37,18 @@
             android:fontFamily="monospace" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/hintText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:alpha="0.6"
+        android:fontFamily="monospace"
+        android:text="@string/hint_touch"
+        android:textColor="@color/matrix_green"
+        android:textSize="12sp" />
 
     <!-- Toggle button for the settings panel -->
     <Button
@@ -68,7 +83,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:layout_marginBottom="80dp"
-        android:maxHeight="480dp"
         android:background="@drawable/settings_panel_bg"
         android:visibility="gone"
         android:padding="16dp">
@@ -187,6 +201,58 @@
                     android:text="@string/charset_alnum" />
 
             </RadioGroup>
+
+            <TextView
+                style="@style/SettingsLabel"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_touch" />
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView style="@style/SettingsRowLabel" android:text="@string/touch_avoid" />
+                <Switch android:id="@+id/avoidSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView style="@style/SettingsRowLabel" android:text="@string/touch_flicker" />
+                <Switch android:id="@+id/flickerSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView style="@style/SettingsRowLabel" android:text="@string/touch_shockwave" />
+                <Switch android:id="@+id/shockwaveSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView style="@style/SettingsRowLabel" android:text="@string/touch_glitch" />
+                <Switch android:id="@+id/touchGlitchSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/SettingsLabel"
+                android:layout_marginTop="8dp"
+                android:text="@string/label_radius" />
+            <SeekBar
+                android:id="@+id/radiusSeek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="160"
+                android:progress="56" />
+
+            <TextView
+                style="@style/SettingsLabel"
+                android:layout_marginTop="8dp"
+                android:text="@string/label_glitch" />
+            <SeekBar
+                android:id="@+id/glitchSeek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="0" />
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView style="@style/SettingsRowLabel" android:text="@string/label_transparent" />
+                <Switch android:id="@+id/transparentSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
 
         </LinearLayout>
 

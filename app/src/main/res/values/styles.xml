@@ -9,6 +9,20 @@
         <item name="android:layout_marginBottom">4dp</item>
     </style>
 
+    <style name="SettingsRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="SettingsRowLabel" parent="SettingsLabel">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+
     <style name="ColorSwatch">
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">32dp</item>

@@ -6,16 +6,21 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.boyoffi9.matrixrainview.MatrixRainView
 import com.boyoffi9.matrixrainview.compose.MatrixRain
 
 private val swatches = listOf(
@@ -28,8 +33,9 @@ private val swatches = listOf(
 )
 
 /**
- * Compose counterpart to [MainActivity] — same set of controls (color, speed,
- * density, glow), driving [MatrixRain] instead of the XML view directly.
+ * Compose counterpart to [MainActivity] — color, speed, density, glow, touch
+ * effects, glitch and transparent mode, driving [MatrixRain] instead of the
+ * XML view directly.
  */
 class ComposeDemoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,12 +52,22 @@ private fun ComposeDemoScreen() {
     var speed by remember { mutableFloatStateOf(1.2f) }
     var density by remember { mutableFloatStateOf(1.0f) }
     var glowEnabled by remember { mutableStateOf(true) }
+    var touchEnabled by remember { mutableStateOf(true) }
+    var glitch by remember { mutableFloatStateOf(0f) }
+    var transparent by remember { mutableStateOf(false) }
     var panelVisible by remember { mutableStateOf(false) }
+
+    // Transparent rain needs something behind it to show through.
+    val backdrop = if (transparent) {
+        Brush.verticalGradient(listOf(Color(0xFF0A1F44), Color(0xFF3A0CA3)))
+    } else {
+        SolidColor(Color.Black)
+    }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(backdrop)
     ) {
         MatrixRain(
             modifier = Modifier.fillMaxSize(),
@@ -60,6 +76,13 @@ private fun ComposeDemoScreen() {
             density = density,
             glowEnabled = glowEnabled,
             fadeStrength = 28,
+            touchEffects = if (touchEnabled) {
+                MatrixRainView.TOUCH_AVOID or MatrixRainView.TOUCH_FLICKER or MatrixRainView.TOUCH_SHOCKWAVE
+            } else {
+                0
+            },
+            glitch = glitch,
+            transparent = transparent,
         )
 
         Text(
@@ -90,7 +113,12 @@ private fun ComposeDemoScreen() {
                     .padding(bottom = 80.dp)
                     .width(260.dp)
             ) {
-                Column(modifier = Modifier.padding(16.dp)) {
+                Column(
+                    modifier = Modifier
+                        .heightIn(max = 360.dp)
+                        .verticalScroll(rememberScrollState())
+                        .padding(16.dp)
+                ) {
                     Text("Color", color = Color.White, fontSize = 14.sp)
                     Row(modifier = Modifier.padding(vertical = 8.dp)) {
                         swatches.forEach { (_, color) ->
@@ -127,6 +155,29 @@ private fun ComposeDemoScreen() {
                     ) {
                         Text("Glow", color = Color.White, fontSize = 14.sp, modifier = Modifier.weight(1f))
                         Switch(checked = glowEnabled, onCheckedChange = { glowEnabled = it })
+                    }
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("Touch effects", color = Color.White, fontSize = 14.sp, modifier = Modifier.weight(1f))
+                        Switch(checked = touchEnabled, onCheckedChange = { touchEnabled = it })
+                    }
+
+                    Text("Glitch", color = Color.White, fontSize = 14.sp)
+                    Slider(
+                        value = glitch,
+                        onValueChange = { glitch = it },
+                        valueRange = 0f..1f,
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("Transparent", color = Color.White, fontSize = 14.sp, modifier = Modifier.weight(1f))
+                        Switch(checked = transparent, onCheckedChange = { transparent = it })
                     }
                 }
             }
