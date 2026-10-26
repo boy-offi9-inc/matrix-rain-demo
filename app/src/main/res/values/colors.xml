@@ -1,4 +1,8 @@
 <resources>
     <color name="matrix_green">#00FF41</color>
     <color name="matrix_black">#000000</color>
+    <color name="term_panel">#F0030804</color>
+    <color name="term_text">#D6EBDD</color>
+    <color name="term_dim">#7A9483</color>
+    <color name="term_line">#24402B</color>
 </resources>

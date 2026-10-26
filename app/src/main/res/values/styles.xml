@@ -1,32 +1,85 @@
 <resources>
 
-    <style name="SettingsLabel">
-        <item name="android:layout_width">wrap_content</item>
+    <!-- Bracketed parameter name, e.g. [ SPEED ] -->
+    <style name="TermLabel">
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#B0FFFFFF</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:fontFamily">monospace</item>
-        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:textColor">@color/term_dim</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="SettingsRow">
+    <!-- Live value next to a label, tinted with the current rain color -->
+    <style name="TermValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textColor">@color/matrix_green</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:tag">accent</item>
+    </style>
+
+    <style name="TermLabelRow">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginTop">10dp</item>
     </style>
 
-    <style name="SettingsRowLabel" parent="SettingsLabel">
+    <style name="TermSeek">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="android:progressDrawable">@drawable/term_seek_track</item>
+        <item name="android:thumb">@drawable/term_seek_thumb</item>
+        <item name="android:splitTrack">false</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">5dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="TermCheck">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:button">@drawable/term_check</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textColor">@color/term_text</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <!-- Tab or segment: bracketed when selected, set in code -->
+    <style name="TermSegment">
         <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">44dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/term_dim</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="TermNote">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textColor">@color/term_dim</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="ColorSwatch">
-        <item name="android:layout_width">32dp</item>
-        <item name="android:layout_height">32dp</item>
-        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
     </style>
 
 </resources>

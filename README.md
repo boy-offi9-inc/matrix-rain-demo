@@ -34,38 +34,35 @@ can't stack them, so the rain view has to be a `FrameLayout` (or
 `ConstraintLayout`) child, not a `LinearLayout` sibling. This app is a
 working, running proof of that pattern instead of just a doc claim.
 
-A settings panel (bottom-right gear icon) wires every runtime-configurable
-property on `MatrixRainView` to a live control:
+A terminal-style console sheet at the bottom of the screen wires every
+runtime-configurable property on `MatrixRainView` to a live control, split
+into three tabs. The rain stays visible above it, and tapping the
+`matrix@rain:~$ config` header collapses the sheet. Picking a rain color
+re-tints the whole console to match.
 
-- Color — 6 swatches, also recolors the banner text to match
-- Speed — 0.1x to 3.0x
-- Density — 0.1x to 2.0x
-- Trail fade
-- Glow toggle
-- Character set — Katakana / Binary / Alnum
-- Touch effects — flow around finger, flicker, tap shockwave, and glitch while held
-- Touch radius — 40dp to 200dp
-- Glitch — intensity from 0 to 1
-- Transparent — drops the black backdrop and shows a gradient behind the rain
+| Tab | Controls |
+| --- | --- |
+| LOOK | Color (6 swatches), glyphs (Katakana / Binary / Alnum), speed 0.1x to 3.0x, density 0.1x to 2.0x, trail fade, glow |
+| TOUCH | Flow around finger, flicker, shockwave on tap, glitch while held, touch radius 40dp to 200dp |
+| FX | Glitch intensity 0 to 1, transparent background over a gradient |
 
 Everything updates the running animation immediately — no restart needed —
 since it's the same public properties any consuming app would use.
 
 ### Try the touch effects
 
-Touch the rain with the settings panel closed. Streams part around your
+Touch the rain above the console. Streams part around your
 finger and close up behind it, glyphs under it flicker, and a quick tap sends
 out a shockwave. Use two or more fingers to part the rain in several places
 at once.
 
 ### Compose demo
 
-A top-right "Compose demo →" button opens `ComposeDemoActivity`, a second
-screen showing the same effect and most of the controls (color, speed,
-density, glow, touch effects, glitch, transparent) but built with Jetpack
-Compose, driving the library's `MatrixRain()`
-composable instead of the XML `MatrixRainView` directly. It's proof the
-Compose wrapper is a drop-in equivalent, not just a doc claim.
+The top-right `[ COMPOSE ]` button opens `ComposeDemoActivity`, a second
+screen with the same console, tabs and controls, built with Jetpack Compose
+and driving the library's `MatrixRain()` composable instead of the XML
+`MatrixRainView` directly. It's proof the Compose wrapper is a drop-in
+equivalent, not just a doc claim.
 
 ## Running it
 

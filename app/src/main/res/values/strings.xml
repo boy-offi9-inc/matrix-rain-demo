@@ -2,25 +2,37 @@
     <string name="app_name">Matrix Rain Demo</string>
     <string name="banner_text">Wake up, Neo...</string>
 
-    <string name="settings_icon">⚙</string>
-    <string name="label_color">Color</string>
-    <string name="label_speed">Speed</string>
-    <string name="label_density">Density</string>
-    <string name="label_fade">Trail fade</string>
-    <string name="label_glow">Glow</string>
-    <string name="label_charset">Character set</string>
-    <string name="charset_katakana">Katakana</string>
-    <string name="charset_binary">Binary</string>
-    <string name="charset_alnum">Alnum</string>
-    <string name="compose_demo_button">Compose demo →</string>
+    <string name="prompt">matrix@rain:~$ config</string>
+    <string name="cursor">█</string>
+    <string name="sheet_collapse">[ - ]</string>
+    <string name="sheet_expand">[ + ]</string>
+    <string name="segment_selected">[ %1$s ]</string>
+    <string name="segment_idle">"  %1$s  "</string>
 
-    <string name="hint_touch">Touch the rain</string>
-    <string name="label_touch">Touch effects</string>
+    <string name="tab_look">LOOK</string>
+    <string name="tab_touch">TOUCH</string>
+    <string name="tab_fx">FX</string>
+
+    <string name="label_color">[ COLOR ]</string>
+    <string name="label_glyphs">[ GLYPHS ]</string>
+    <string name="label_speed">[ SPEED ]</string>
+    <string name="label_density">[ DENSITY ]</string>
+    <string name="label_fade">[ TRAIL FADE ]</string>
+    <string name="label_radius">[ RADIUS ]</string>
+    <string name="label_glitch">[ GLITCH ]</string>
+
+    <string name="glyphs_katakana">KATAKANA</string>
+    <string name="glyphs_binary">BINARY</string>
+    <string name="glyphs_alnum">ALNUM</string>
+
+    <string name="glow">Glow</string>
     <string name="touch_avoid">Flow around finger</string>
-    <string name="touch_flicker">Flicker</string>
-    <string name="touch_shockwave">Tap shockwave</string>
+    <string name="touch_flicker">Flicker under finger</string>
+    <string name="touch_shockwave">Shockwave on tap</string>
     <string name="touch_glitch">Glitch while held</string>
-    <string name="label_radius">Touch radius</string>
-    <string name="label_glitch">Glitch</string>
-    <string name="label_transparent">Transparent</string>
+    <string name="transparent">Transparent background</string>
+    <string name="transparent_note">The rain draws over a gradient instead of black.</string>
+
+    <string name="compose_demo_button">[ COMPOSE ]</string>
+    <string name="hint_touch">&gt; touch the rain</string>
 </resources>
