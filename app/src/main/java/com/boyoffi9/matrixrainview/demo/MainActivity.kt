@@ -70,12 +70,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        rain.resume()
         // A system-wide "remove animations" setting keeps the cursor solid.
         val scale = Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
         if (scale != 0f) handler.postDelayed(blink, 530)
     }
 
     override fun onPause() {
+        rain.pause()
         handler.removeCallbacks(blink)
         cursor.alpha = 1f
         cursorOn = true

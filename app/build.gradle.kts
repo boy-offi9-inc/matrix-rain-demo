@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-    implementation("com.github.boy-offi9-inc:matrix-rain-view:1.2.0")
+    implementation("com.github.boy-offi9-inc:matrix-rain-view:1.2.2")
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
 

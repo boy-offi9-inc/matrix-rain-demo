@@ -93,16 +93,28 @@ private val tabNames = listOf("LOOK", "TOUCH", "FX")
  * FX) driving the [MatrixRain] composable instead of the XML view.
  */
 class ComposeDemoActivity : ComponentActivity() {
+    private val resumed = mutableStateOf(true)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeDemoScreen()
+            ComposeDemoScreen(paused = !resumed.value)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        resumed.value = true
+    }
+
+    override fun onPause() {
+        resumed.value = false
+        super.onPause()
     }
 }
 
 @Composable
-private fun ComposeDemoScreen() {
+private fun ComposeDemoScreen(paused: Boolean = false) {
     var accent by remember { mutableStateOf(swatches[0]) }
     var speed by remember { mutableFloatStateOf(1.2f) }
     var density by remember { mutableFloatStateOf(1.0f) }
@@ -150,6 +162,7 @@ private fun ComposeDemoScreen() {
             touchRadiusPx = radiusDp * screenDensity,
             glitch = glitch,
             transparent = transparent,
+            paused = paused,
         )
 
         Column(modifier = Modifier.fillMaxSize()) {
