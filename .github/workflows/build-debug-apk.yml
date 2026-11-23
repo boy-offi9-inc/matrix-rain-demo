@@ -4,9 +4,17 @@ name: Build Debug APK
 on:
   push:
     branches: [ main ]
+    tags: [ 'v*' ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-debug-apk-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-debug-apk:
@@ -38,10 +46,20 @@ jobs:
       - name: Assemble debug APK
         run: gradle clean :app:assembleDebug --stacktrace
 
-      - name: Upload debug APK
+      - name: Upload CI artifact
+        if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
         uses: actions/upload-artifact@v4
         with:
           name: matrix-rain-demo-debug-apk
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 7
+
+      # Tagged builds ship the APK to GitHub Releases, which is where
+      # people can actually download it.
+      - name: Release APK
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        uses: softprops/action-gh-release@v2
+        with:
+          files: app/build/outputs/apk/debug/*.apk
+          generate_release_notes: true
